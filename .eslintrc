@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 5,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "env": {
+    "browser": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-console": "off",
+    "no-undef": "off",
+    "no-unused-vars": "off"
+  }
+}
+
