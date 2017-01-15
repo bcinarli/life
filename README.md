@@ -1,5 +1,5 @@
 # Life Simulation of Conway's Game
-Live demo at [https://bcinarli.github.io/life]()
+Live demo at [https://bcinarli.github.io/life](https://bcinarli.github.io/life)
 
 ## To Run Locally
 ```
