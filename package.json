@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bcinarli/project-templates.git"
+    "url": "https://github.com/bcinarli/life.git"
   },
   "author": "Bilal Cinarli <bcinarli@gmail.com>",
   "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bcinarli/project-templates/issues"
+    "url": "https://github.com/bcinarli/life/issues"
   },
-  "homepage": "https://github.com/bcinarli/project-templates/gulp-based",
+  "homepage": "https://github.com/bcinarli/life",
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "latest",
