@@ -5,4 +5,4 @@ Live demo at [https://bcinarli.github.io/life]()
 `npm install`
 `gulp connect`
 
-then navigate to [http://localhost:3000]()
+then navigate to [http://localhost:3000](http://localhost:3000)
