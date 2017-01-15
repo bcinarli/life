@@ -1,4 +1,5 @@
 /*! @author Bilal Cinarli */
+
 html,
 body {
   width: 100%;
@@ -55,3 +56,6 @@ body {
 .action-button + .action-button {
   margin-left: 5px;
 }
+
+
+/*# sourceMappingURL=life-in-cells.css.map*/
