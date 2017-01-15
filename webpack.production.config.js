@@ -7,7 +7,8 @@
 const webpack = require('webpack');
 const config  = require('./app.config');
 
-let StyleLintPlugin = require('stylelint-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin   = require('stylelint-webpack-plugin');
 
 const prodConfig = {
     context: config.source,
@@ -21,6 +22,7 @@ const prodConfig = {
     },
     module:  {
         rules: [
+            config.rules.html,
             config.rules.eslint,
             config.rules.babel,
             config.rules.extract
@@ -36,6 +38,9 @@ const prodConfig = {
     },
     devtool: 'cheap-module-source-map',
     plugins: [
+        new HtmlWebpackPlugin({
+            template: config.source + '/templates/static/index.tpl'
+        }),
         new StyleLintPlugin(),
         config.extractCSS,
         new webpack.DefinePlugin({

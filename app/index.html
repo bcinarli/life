@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Life on Cells</title>
-    <link rel="stylesheet" href="assets/styles/life-in-cells.css" />
-    <script src="assets/scripts/life-in-cells.js"></script>
-</head>
+    <title>Life</title>
+<link href="./assets/styles/life-in-cells.css" rel="stylesheet"></head>
 <body>
 <div id="life-app" class="life-app">
     <div id="life-app-world" class="life-app-world"></div>
@@ -16,12 +14,5 @@
         <button class="random-habitat action-button">Random Habitat</button>
     </div>
 </div>
-<script>
-    life.ready(function() {
-        life.World = new life.world(20, true);
-
-        life.init();
-    });
-</script>
-</body>
+<script type="text/javascript" src="./assets/scripts/life-in-cells.js"></script></body>
 </html>
