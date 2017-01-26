@@ -18,7 +18,13 @@
 </div>
 <script>
     life.ready(function() {
-        life.World = new life.world(20, true);
+        life.World = new life.world(20);
+
+        life.World.cells[1][1].alive = true;
+        life.World.cells[1][3].alive = true;
+        life.World.cells[2][2].alive = true;
+        life.World.cells[2][3].alive = true;
+        life.World.cells[3][2].alive = true;
 
         life.init();
     });

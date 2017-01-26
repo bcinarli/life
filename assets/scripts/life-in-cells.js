@@ -73,19 +73,19 @@
         this.neighbours = neighbours;
     };
 
-    Cell.prototype.willDie = function() {
-        var aliveNeighbours = this.aliveNeighbours();
+    Cell.prototype.willDie = function(currentWorld) {
+        var aliveNeighbours = this.aliveNeighbours(currentWorld);
 
         return aliveNeighbours < 2 || aliveNeighbours > 3;
     };
 
-    Cell.prototype.willBorn = function() {
-        var aliveNeighbours = this.aliveNeighbours();
+    Cell.prototype.willBorn = function(currentWorld) {
+        var aliveNeighbours = this.aliveNeighbours(currentWorld);
 
         return aliveNeighbours === 3;
     };
 
-    Cell.prototype.aliveNeighbours = function() {
+    Cell.prototype.aliveNeighbours = function(currentWorld) {
         var aliveNeighbours = 0;
 
         if(this.neighbours.length === 0) {
@@ -93,8 +93,8 @@
         }
 
         this.neighbours.map(function(neighbour) {
-            if(typeof app.World.cells[neighbour[0]] !== 'undefined' && typeof app.World.cells[neighbour[0]][neighbour[1]] !== 'undefined') {
-                if(app.World.cells[neighbour[0]][neighbour[1]].isAlive()) {
+            if(typeof currentWorld[neighbour[0]] !== 'undefined' && typeof currentWorld[neighbour[0]][neighbour[1]] !== 'undefined') {
+                if(currentWorld[neighbour[0]][neighbour[1]].isAlive()) {
                     aliveNeighbours++;
                 }
             }
@@ -198,19 +198,30 @@
         var publicMethods = {};
 
         publicMethods.nextGeneration = function() {
-            var nextGen = [];
+            var nextGen,
+                currentWorld = freezeWorld(app.World.cells);
 
-            app.World.cells.map(function(row, index) {
-                nextGen[index] = row.map(function(cell, index) {
-                    if(cell.willDie()) {
+            nextGen = app.World.cells.map(function(row) {
+                return row.map(function(cell) {
+                    if(cell.willDie(currentWorld)) {
                         cell.die();
                     }
 
-                    if(cell.willBorn()) {
+                    if(cell.willBorn(currentWorld)) {
                         cell.born();
                     }
 
                     return cell;
+                });
+            });
+
+            app.World.cells = nextGen;
+        };
+
+        var freezeWorld = function(cells) {
+            return cells.map(function(row) {
+                return row.map(function(cell) {
+                    return new app.cell({coordinates: cell.coordinates, alive: cell.alive});
                 });
             });
         };
