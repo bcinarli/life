@@ -9,19 +9,30 @@
         var publicMethods = {};
 
         publicMethods.nextGeneration = function() {
-            var nextGen = [];
+            var nextGen,
+                currentWorld = freezeWorld(app.World.cells);
 
-            app.World.cells.map(function(row, index) {
-                nextGen[index] = row.map(function(cell, index) {
-                    if(cell.willDie()) {
+            nextGen = app.World.cells.map(function(row) {
+                return row.map(function(cell) {
+                    if(cell.willDie(currentWorld)) {
                         cell.die();
                     }
 
-                    if(cell.willBorn()) {
+                    if(cell.willBorn(currentWorld)) {
                         cell.born();
                     }
 
                     return cell;
+                });
+            });
+
+            app.World.cells = nextGen;
+        };
+
+        var freezeWorld = function(cells) {
+            return cells.map(function(row) {
+                return row.map(function(cell) {
+                    return new app.cell({coordinates: cell.coordinates, alive: cell.alive});
                 });
             });
         };
